@@ -1,0 +1,27 @@
+<div class="w-25 mx-auto">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Titre</label>
+          <input type="text" class="form-control" formControlName="nom">
+          
+          <div *ngIf="postForm.get('nom')?.invalid && postForm.get('nom')?.touched">
+            <p *ngIf="postForm.get('nom')?.errors?.['required']">nom requis</p>
+          </div>
+        </div>
+       
+        <div class="mb-3">
+          <label class="form-label">description</label>
+          <textarea formControlName="description" class="form-control" rows="3"></textarea>
+          <div *ngIf="postForm.get('description')?.invalid && postForm.get('description')?.touched">
+            <p *ngIf="postForm.get('description')?.errors?.['required']">description requis</p>
+          </div>
+
+          <label for="start">Start date:</label>
+            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31" formControlName="date" />
+
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
